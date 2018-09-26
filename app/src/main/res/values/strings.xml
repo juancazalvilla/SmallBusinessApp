@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SmallBusinessApp</string>
+    <string name="title_activity_add_card">AddCard</string>
+    <string name="payment_method">Select payment method</string>
+    <string name="CARDNAME">CARDNAME</string>
+    <string name="CARDNUMBER">CARDNUMBER</string>
+    <string name="SERVICE">SERVICE</string>
+</resources>
