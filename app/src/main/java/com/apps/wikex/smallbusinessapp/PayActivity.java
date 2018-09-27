@@ -22,7 +22,7 @@ public class PayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay);
-
+        incomingIntent = getIntent();
         payButton = findViewById(R.id.finishB);
         payButton.setEnabled(false);
 
@@ -32,52 +32,56 @@ public class PayActivity extends AppCompatActivity {
             intent.putExtra(AppData.SERVICE, incomingIntent.getStringExtra(AppData.SERVICE));
             Log.v("CWTS", "No cardcount , go to addcCard aticvity");
             startActivity(intent);
-        }
 
-        // Recive service type
-        incomingIntent = getIntent();
-        String service = incomingIntent.getStringExtra(AppData.SERVICE);
+        } else {
 
-
-        // Add Card list
-        final RadioGroup cardList = findViewById(R.id.cardListRG);
-        cardList.removeAllViews();
-
-        int index = 0;
-        RadioButton rb;
-
-        for(Cards card : AppData.getInstance().getList() ){
-            rb = new RadioButton(cardList.getContext());
-            rb.setId(index++);
-            rb.setText(card.nameHolder + " : " + card.number);
-            rb.setHint(Integer.toString(card.number));
-            Log.v("CWTS", "load car value :" + card.nameHolder + " - " + card.number);
-            cardList.addView(rb);
-        }
-
-        rb = new RadioButton(cardList.getContext());
-
-        rb.setId(EXITINDEX);
-        rb.setText("Pay with other card");
-        cardList.addView(rb);
+            // Recive service type
+            String service = incomingIntent.getStringExtra(AppData.SERVICE);
 
 
-        // Add trigger "Pay whit other card" action
-        final Context parent = this;
+            // Add Card list
+            final RadioGroup cardList = findViewById(R.id.cardListRG);
+            cardList.removeAllViews();
 
-        cardList.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radioButton = findViewById(cardList.getCheckedRadioButtonId());
-                if(radioButton.getId() == EXITINDEX){
-                    Intent intent = new Intent(parent,AddCard.class);
-                    intent.putExtra(AppData.SERVICE, incomingIntent.getStringExtra(AppData.SERVICE));
-                    startActivity(intent);
-                }
+            int index = 0;
+            RadioButton rb;
 
-                payButton.setEnabled(true);
+            for(Cards card : AppData.getInstance().getList() ){
+                rb = new RadioButton(cardList.getContext());
+                rb.setId(index++);
+                rb.setText(card.nameHolder + " : " + card.number);
+                rb.setHint(Integer.toString(card.number));
+                Log.v("CWTS", "load car value :" + card.nameHolder + " - " + card.number);
+                cardList.addView(rb);
             }
-        });
+
+            rb = new RadioButton(cardList.getContext());
+
+            rb.setId(EXITINDEX);
+            rb.setText("Pay with other card");
+            cardList.addView(rb);
+
+
+            // Add trigger "Pay whit other card" action
+            final Context parent = this;
+
+            cardList.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    RadioButton radioButton = findViewById(cardList.getCheckedRadioButtonId());
+                    if(radioButton.getId() == EXITINDEX){
+                        Intent intent = new Intent(parent,AddCard.class);
+                        intent.putExtra(AppData.SERVICE, incomingIntent.getStringExtra(AppData.SERVICE));
+                        startActivity(intent);
+                    }
+
+                    payButton.setEnabled(true);
+                }
+            });
+
+        }
+
+
     }
 
     public void nextScreen(View view){

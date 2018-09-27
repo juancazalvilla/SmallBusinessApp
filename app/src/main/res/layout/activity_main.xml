@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background= "@color/purple"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_width="229dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,7 +21,7 @@
         android:id="@+id/button"
         android:layout_width="128dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="40dp"
         android:onClick="nextScreen"
         android:text="Continue"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +42,7 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="303dp"
+        android:layout_width="200dp"
         android:layout_height="158dp"
         android:layout_marginTop="256dp"
         android:orientation="vertical"
@@ -57,7 +58,7 @@
             android:layout_weight="1"
             android:checked="false"
             android:focusable="auto"
-            android:hint="basic"
+            android:hint="Basic wash"
             android:text="$2.99 Basic + TAX" />
 
         <RadioButton
@@ -65,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="medium"
+            android:hint="Meduim wash"
             android:text="$5.99 Medium + TAX" />
 
         <RadioButton
@@ -73,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="ultra"
+            android:hint="Ultra wash"
             android:text="$7.99 Ultra + TAX" />
 
     </RadioGroup>

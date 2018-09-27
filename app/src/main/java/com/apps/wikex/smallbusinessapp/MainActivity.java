@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         String cardname;
         int cardnumber;
 
+        //AppData.getInstance().cardCount = 0;
         AppData.getInstance().cardCount = sh.getInt(AppData.CARDCOUNT, -1);
+
         Log.v("CWTS", "Cardcount load value :" + AppData.getInstance().cardCount);
         for (int i = 0; i < AppData.getInstance().cardCount; i++){
             cardname = sh.getString(AppData.CARDNAME + i, "");

@@ -32,4 +32,9 @@ public class FinishActivity extends AppCompatActivity {
         TextView codeNumber = findViewById(R.id.codeNumber);
         codeNumber.setText(String.valueOf(AppData.ramdonNumber()));
     }
+
+    @Override
+    public void onBackPressed(){ }
+
+
 }

@@ -57,8 +57,11 @@ public class AddCard extends AppCompatActivity {
         SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor shEditor = sh.edit();
 
-        shEditor.putString(AppData.CARDNAME + AppData.getInstance().cardCount, nameCard);
-        shEditor.putInt(AppData.CARDNUMBER + AppData.getInstance().cardCount, numberCard);
+        Cards savedCard = new Cards(nameCard,numberCard);
+
+        shEditor.putString(AppData.CARDNAME + AppData.getInstance().cardCount, savedCard.getNameHolder());
+        shEditor.putInt(AppData.CARDNUMBER + AppData.getInstance().cardCount, savedCard.getNumber());
+        AppData.getInstance().getList().add(savedCard);
         AppData.getInstance().cardCount++;
         shEditor.putInt(AppData.CARDCOUNT, AppData.getInstance().cardCount);
         Log.v("DATA", "CardAdded : " + nameCard + " - " + numberCard + " ["+AppData.getInstance().cardCount+"]");
